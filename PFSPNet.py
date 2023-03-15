@@ -255,7 +255,7 @@ class PFSPNet(nn.Module):
         state = state.unsqueeze(1)
         # [batch_size, m_max] -> [batch_size, 1, d_model]
         
-        encoder_inputs = torch.cat([state, inputs], dim=1)  # 由于 state 数据特性和其余 inputs 不一致，所以这里没有额外编码
+        encoder_inputs = torch.cat([state, inputs], dim=1)  # 由于 state 数据特性和其余 inputs 不一致，所以这里没有额外编码区分 state 和其余向量
         encoder_inputs = self.emb_encoder(encoder_inputs)
         encoder_inputs = encoder_inputs + n + m
         # [batch_size, n+1, d_model]
